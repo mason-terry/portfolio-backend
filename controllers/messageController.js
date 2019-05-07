@@ -1,8 +1,8 @@
-const { Message } = require('../models')
+const { MessageModel } = require('../models')
 
 module.exports = {
   getMessages: async (req, res) => {
-    const messages = await Message.find({}).sort({ _id: -1 })
+    const messages = await MessageModel.find({}).sort({ _id: -1 })
     res.send(messages)
   },
   addMessage: async (req, res) => {
@@ -11,7 +11,7 @@ module.exports = {
     const message = req.body.message
     const sentOn = new Date()
 
-    const newMessage = new Message({
+    const newMessage = new MessageModel({
       name,
       email,
       message,

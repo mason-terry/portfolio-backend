@@ -1,8 +1,8 @@
-const { Blog } = require('../models')
+const { BlogModel } = require('../models')
 
 module.exports = {
   getAllBlogs: async (req, res) => {
-    const Blogs = await Blog.find({}).sort({ _id: -1 })
+    const Blogs = await BlogModel.find({}).sort({ _id: -1 })
     res.send(Blogs)
   },
   addBlog: async (req, res) => {
@@ -10,7 +10,7 @@ module.exports = {
     const body = req.body.body
     const createdOn = new Date()
 
-    const newBlogPost = await new Blog({
+    const newBlogPost = await new BlogModel({
       title,
       body,
       createdOn
@@ -30,13 +30,13 @@ module.exports = {
     const body = req.body.body
     const editedOn = new Date()
 
-    await Blog.findByIdAndUpdate(id, { title, body, editedOn })
+    await BlogModel.findByIdAndUpdate(id, { title, body, editedOn })
     res.send({ success: true, message: 'Blog updated successfully!' })
   },
   getBlog: async (req, res) => {
     console.log(req.params)
     const id = req.params.id
-    const SingleBlog = await Blog.findById(id)
+    const SingleBlog = await BlogModel.findById(id)
     res.send(SingleBlog)
   }
 }

@@ -1,8 +1,8 @@
-const { Admin } = require('../models')
+const { AdminModel } = require('../models')
 
 module.exports = {
   getAdmins: async (req, res) => {
-    const admins = await Admin.find({})
+    const admins = await AdminModel.find({})
     res.send(admins)
   },
   addAdmin: async (req, res) => {
@@ -10,7 +10,7 @@ module.exports = {
     const email = req.body.email
     const password = req.body.password
 
-    const newAdmin = await new Admin({
+    const newAdmin = await new AdminModel({
       name,
       email,
       password
@@ -20,7 +20,7 @@ module.exports = {
       if (error) throw error
       res.send({
         success: true,
-        message: 'Admin saved successfully!'
+        message: 'AdminModel saved successfully!'
       })
     })
   }

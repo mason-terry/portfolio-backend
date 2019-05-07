@@ -1,5 +1,5 @@
 module.exports = {
-  Blog: require('./blog-model'),
-  Message: require('./message-model'),
-  Admin: require('./admin-model')
+  BlogModel: require('./blog-model'),
+  MessageModel: require('./message-model'),
+  AdminModel: require('./admin-model')
 }
