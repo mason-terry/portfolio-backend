@@ -7,6 +7,7 @@ const routes = require('./routes')
 const app = express()
 const PORT = 8081 || process.env.PORT
 
+mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio')
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'Connection Error'))
